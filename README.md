@@ -1,4 +1,4 @@
-# True Twin-Propagation Engine
+# True Twin-Propagation
 
 High-performance computational engine for testing the **Twin-Prime Propagation Conjecture**.
 
