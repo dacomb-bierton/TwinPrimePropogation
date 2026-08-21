@@ -1,8 +1,10 @@
 # True Twin-Propagation
 
+[![DOI](https://zenodo.org/badge/1341432193.svg)](https://doi.org/10.5281/zenodo.22040224)
+
 High-performance computational engine for testing the **Twin-Prime Propagation Conjecture**.
 
-Paper: [A Twin-Prime Propagation Conjecture](https://zenodo.org/records/22017371)  
+Paper: [A Twin-Prime Propagation Conjecture](https://doi.org/10.5281/zenodo.22040224)  
 Author: Dacomb Bierton (August 2026)
 
 ---
@@ -85,10 +87,28 @@ MAX_SUCCESS_ROWS = 4_000_000
 
 ## Citation
 
-If you use this code or the associated conjecture in academic work, please cite:
+If you use this software, please cite it as below.
 
-> Bierton, D. (2026). *A Twin-Prime Propagation Conjecture*. Zenodo.  
-> https://doi.org/10.5281/zenodo.22017371
+**APA**
+
+> Bierton, D. (2026). *Twin Prime Propagation* (v1.0). Zenodo. https://doi.org/10.5281/zenodo.22040224
+
+**BibTeX**
+
+```bibtex
+@software{Bierton_Twin_Prime_Propagation_2026,
+  author       = {Bierton, Dacomb},
+  title        = {Twin Prime Propagation},
+  month        = aug,
+  year         = 2026,
+  publisher    = {Zenodo},
+  version      = {v1.0},
+  doi          = {10.5281/zenodo.22040224},
+  url          = {https://doi.org/10.5281/zenodo.22040224}
+}
+```
+
+A `CITATION.cff` file is also included in this repository for automated citation tools.
 
 ---
 
@@ -96,37 +116,22 @@ If you use this code or the associated conjecture in academic work, please cite:
 
 Copyright © 2026 Dacomb Bierton
 
-This software is released under the **MIT License**.
+This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
-The associated research paper is available under a Creative Commons Attribution 4.0 International License (CC BY 4.0).
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-```
-MIT License
+You are free to:
 
-Copyright (c) 2026 Dacomb Bierton
+- **Share** — copy and redistribute the material in any medium or format
+- **Adapt** — remix, transform, and build upon the material for any purpose, even commercially
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Under the following terms:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
 
 ---
 
 ## Related Work
 
-- Full paper and supporting materials: [Zenodo record](https://zenodo.org/records/22017371)
+- Full paper and supporting materials: [https://doi.org/10.5281/zenodo.22040224](https://doi.org/10.5281/zenodo.22040224)
 ```
