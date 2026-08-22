@@ -110,7 +110,7 @@ If you use this software, please cite it as below.
 }
 ```
 
-A `CITATION.cff` file is also included in this repository for automated citation tools.
+A `CITATION.cff` file is also included in this repository.
 
 ---
 
