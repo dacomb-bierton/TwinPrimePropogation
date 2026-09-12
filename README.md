@@ -34,14 +34,16 @@ Extensive computation up to \( 10^{13} \) shows that the success rate declines s
 
 This program systematically searches for consecutive lower twin primes and tests the propagation condition:
 
-1. Uses a **segmented sieve** to generate primes efficiently over large intervals.
-2. Identifies twin primes (pairs differing by 2).
+1. Uses a vectorised **segmented sieve** (odd numbers only) to generate primes efficiently over large intervals. The small-prime table grows automatically with the search frontier, so the sieve stays exact however far the run goes.
+2. Identifies lower twin primes (pairs differing by 2), including pairs that straddle a segment boundary.
 3. For every pair of consecutive lower twin primes \( (p, q) \), computes \( C = p + q + 1 \) and \( D = p + q + 3 \).
-4. Tests whether \( C \) or \( D \) is itself a lower twin prime using fast primality tests (gmpy2 when available, otherwise deterministic Miller-Rabin).
+4. Tests whether \( C \) or \( D \) is a member of a twin-prime pair using fast primality tests (gmpy2 when available, otherwise a Miller–Rabin test that is deterministic for all 64-bit inputs).
 5. Records successful propagations and tracks empirical success rates in **dyadic intervals**.
-6. Supports **safe checkpointing and resumption**, allowing long-running searches to be interrupted and continued.
+6. Supports **safe checkpointing and resumption**. Results are committed one whole segment at a time and success rows are written together with the checkpoint, so an interrupted run resumes without losing or duplicating pairs.
 
 ### Output files
+
+All output is written to the `true_twin_propagation/` directory (configurable with `--output-dir`):
 
 | File | Description |
 |------|-------------|
@@ -58,7 +60,7 @@ This program systematically searches for consecutive lower twin primes and tests
 - Optional but strongly recommended: `gmpy2` (significantly faster primality testing)
 
 ```bash
-pip install numpy gmpy2
+pip install -r requirements.txt
 ```
 
 ---
@@ -66,23 +68,31 @@ pip install numpy gmpy2
 ## Usage
 
 ```bash
-python true_twin_propagation.py
+python twin_prime_prop.py
 ```
 
 The script will:
 
-- Resume from the last checkpoint if one exists, or start from the configured `RESUME_FROM` value.
+- Resume from the last checkpoint if one exists, or start from `--start` (default \( 2^{38} \)).
 - Process successive large segments.
 - Checkpoint periodically.
-- Handle clean interruption (`Ctrl+C`) by saving state.
+- Handle clean interruption (`Ctrl+C`) by finishing the current segment and saving state. A second `Ctrl+C` aborts immediately; the saved state is still consistent.
 
-Key configuration constants are at the top of the script:
+Every setting can be given on the command line (defaults shown):
 
-```python
-SEGMENT_SIZE     = 150_000_000
-CHECKPOINT_EVERY = 40_000
-RESUME_FROM      = 274_877_906_944
-MAX_SUCCESS_ROWS = 4_000_000
+```text
+--start            274877906944   lower bound when no checkpoint exists
+--stop-at          (none)         stop once the frontier reaches this value
+--segment-size     150000000      numbers sieved per segment
+--checkpoint-every 40000          checkpoint after this many new twin primes
+--max-success-rows 4000000        cap on rows written to the successes CSV
+--output-dir       true_twin_propagation
+```
+
+For example, a short self-contained run from the origin that is easy to verify by hand:
+
+```bash
+python twin_prime_prop.py --start 0 --stop-at 10000000 --segment-size 1000000 --output-dir /tmp/tpp-check
 ```
 
 ---
@@ -136,4 +146,3 @@ Under the following terms:
 ## Related Work
 
 - Full paper and supporting materials: [https://doi.org/10.5281/zenodo.22040224](https://doi.org/10.5281/zenodo.22040224)
-```
