@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+
+# Run output (CSV results and checkpoints)
+true_twin_propagation/
